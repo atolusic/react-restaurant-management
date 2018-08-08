@@ -19,7 +19,7 @@ const Input = props => {
     case "input":
       input = (
         <div className={`input-field ${classes}`} style={additionStyle}>
-          {icon && <i class="material-icons prefix">attach_money</i>}
+          {icon && <i className="material-icons prefix">attach_money</i>}
           <input
             className="validate"
             type={type}

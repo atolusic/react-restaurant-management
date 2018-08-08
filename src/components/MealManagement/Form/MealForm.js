@@ -1,14 +1,40 @@
 import React, { Component } from "react";
+import { firestoreConnect } from "react-redux-firebase";
 
 import Input from "./Input";
 
-export class MealForm extends Component {
+class MealForm extends Component {
   state = {
     name: "",
     price: "",
     desc: "",
     specialOffer: false,
     discount: false
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const { name, price, desc, specialOffer, discount } = this.state;
+    const { firestore } = this.props;
+
+    const data = {
+      name,
+      price,
+      desc,
+      specialOffer,
+      discount
+    };
+    // dodaj vrijednosti iz forme u bazu i update-aj store
+    firestore.add({ collection: "meals" }, data);
+    // ocisti fieldove forme nakon dodavanja
+    this.setState({
+      name: "",
+      price: "",
+      desc: "",
+      specialOffer: false,
+      discount: false
+    });
   };
 
   onInputChange = e => {
@@ -19,9 +45,9 @@ export class MealForm extends Component {
     this.setState({ [e.target.name]: !this.state[e.target.name] });
 
   render() {
-    const { name, desc, price, check, specialOffer, discount } = this.state;
+    const { name, desc, price, specialOffer, discount } = this.state;
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <Input
           name="name"
           type="text"
@@ -87,4 +113,4 @@ export class MealForm extends Component {
   }
 }
 
-export default MealForm;
+export default firestoreConnect()(MealForm);

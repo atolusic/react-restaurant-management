@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.3.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-font-face": "^0.2.1",
+    "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.1.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-firestore": "^0.5.7"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 import Layout from "./hoc/Layout";
-import { AdminPanel } from "./components/AdminPanel/AdminPanel";
+import AdminPanel from "./components/AdminPanel/AdminPanel";
 
 class App extends Component {
   render() {

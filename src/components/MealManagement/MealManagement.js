@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactFontFace from "react-font-face";
 
-import blanchCapsInline from "../../assets/font/blanch_caps_inline-webfont.woff";
+import { fontPrimary } from "../../assets/font/font";
 
-import { MealForm } from "./Form/MealForm";
+import MealForm from "./Form/MealForm";
 
-const MealManagement = () => {
+const MealManagement = props => {
   return (
     <div className="card">
       <div className="card-content grey-text">
@@ -16,7 +16,7 @@ const MealManagement = () => {
             fontSize: "3.5rem"
           }}
         >
-          DODAJ NOVI OBROK U MENI<span
+          DODAJ NOVI OBROK<span
             style={{ fontSize: "2rem" }}
             className="material-icons"
           >
@@ -33,20 +33,4 @@ const MealManagement = () => {
   );
 };
 
-let fontConfig = {
-  myFont: ["blanch"],
-  file: [
-    {
-      fontFamily: "Blanch Caps Inline Regular",
-      unicodeRange:
-        "U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      file: blanchCapsInline,
-      fontType: "truetype",
-      fileLocal: "Blanch Caps Inline Regular"
-    }
-  ]
-};
-
-export default ReactFontFace(MealManagement, fontConfig);
+export default ReactFontFace(MealManagement, fontPrimary);
