@@ -7,26 +7,16 @@ import { firestoreConnect } from "react-redux-firebase";
 import { fontSecondary } from "../../../assets/font/font";
 import noImg from "../../../assets/imgs/noImg.png";
 
-import PulseButton from "../../UI/PulseButton";
+import Spinner from "../../UI/Spinner";
 
 class Meal extends React.Component {
-  state = {
-    image: null
-  };
+  onDeleteClick = e => {
+    const {
+      mealDetail: { id },
+      firestore
+    } = this.props;
 
-  onUploadClickHandler = e => {
-    const { firebase, mealDetail, firestore } = this.props;
-    const { image } = this.state;
-    const storage = firebase.storage().ref(`meals/${mealDetail.id}`);
-    storage.put(image).then(() => {
-      storage.getDownloadURL().then(img => {
-        const updMeal = {
-          ...mealDetail,
-          img
-        };
-        firestore.update({ collection: "meals", doc: mealDetail.id }, updMeal);
-      });
-    });
+    firestore.delete({ collection: "meals", doc: id });
   };
 
   render() {
@@ -36,46 +26,97 @@ class Meal extends React.Component {
     return (
       <div style={mealStyle}>
         <div style={{ display: "flex", flex: 2 }}>
-          <img
-            src={img ? img : noImg}
-            width="200"
-            height="150"
-            style={{ flex: 1 }}
-          />
-          <div style={{ flexDirection: "column", marginLeft: "1rem", flex: 2 }}>
+          {!img ? (
+            <div
+              className="z-depth-3"
+              style={{
+                width: "150px",
+                height: "130px",
+                flex: 1,
+                border: "2px solid #333",
+                padding: ".2rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Spinner />
+            </div>
+          ) : (
+            <img
+              src={img ? img : noImg}
+              width="150"
+              height="130"
+              style={{ flex: 1, border: "2px solid #333", padding: ".2rem" }}
+              className="z-depth-3"
+              alt={name}
+            />
+          )}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: "1rem",
+              flex: 2
+            }}
+          >
             <p
               style={{
                 fontFamily: "Haymaker",
                 color: "#333",
                 letterSpacing: ".2rem",
-                fontSize: "1.5rem"
+                fontSize: "1.6rem"
               }}
             >
               {name}
             </p>
             <p style={{ width: "100%" }}>
-              {desc.length < 100 ? desc : "Predugačak opis.. Detalji ⇒"}
+              {desc.length < 200 ? desc : "Predugačak opis.. Detalji ⇒"}
             </p>
-            <div>
-              <input
-                type="file"
-                onChange={event =>
-                  this.setState({ image: event.target.files[0] })
-                }
-              />
-              <button onClick={e => this.onUploadClickHandler(e)}>
-                Dodaj fotografiju
-              </button>
-            </div>
           </div>
         </div>
-        <div style={{ flex: 1 }}>
-          {specialOffer && (
-            <PulseButton icon={"whatshot"} color={"red lighten-1"} />
-          )}
-          {discount && (
-            <PulseButton icon={"trending_down"} color={"green accent-3"} />
-          )}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "flex-end"
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "Haymaker",
+              color: "#333",
+              fontSize: "1.3rem"
+            }}
+          >
+            {parseFloat(price).toFixed(2)} kn
+          </p>
+          <div>
+            {specialOffer && (
+              <p style={{ fontFamily: "Haymaker", fontSize: ".9rem" }}>
+                ➥ posebna ponuda
+              </p>
+            )}
+            {discount && (
+              <p style={{ fontFamily: "Haymaker", fontSize: ".9rem" }}>
+                ➥ akcijska cijena
+              </p>
+            )}
+          </div>
+          <div>
+            <a className="waves-effect waves-light btn-small orange lighten-1">
+              <i className="material-icons">create</i>
+            </a>
+            <a
+              style={{ marginLeft: ".3rem" }}
+              className="waves-effect waves-light btn-small red darken-1"
+              onClick={this.onDeleteClick}
+            >
+              <i className="material-icons">close</i>
+            </a>
+          </div>
         </div>
       </div>
     );

@@ -25,10 +25,6 @@ const MealManagement = props => {
         </span>
         <MealForm />
       </div>
-      <div className="card-action">
-        <a href="#!">This is a link</a>
-        <a href="#!">This is a link</a>
-      </div>
     </div>
   );
 };
