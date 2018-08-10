@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
-import { connect } from "react-redux";
 
 class UploadImage extends Component {
   state = {
@@ -9,10 +7,11 @@ class UploadImage extends Component {
   };
 
   onUploadClickHandler = e => {
-    const { firebase, mealDetail, firestore } = this.props;
+    const { firebase, mealDetail, firestore, toggleLoading } = this.props;
     const { image } = this.state;
     const storage = firebase.storage().ref(`meals/${mealDetail.id}`);
 
+    toggleLoading();
     storage.put(image).then(() => {
       storage.getDownloadURL().then(img => {
         const updMeal = {
@@ -21,9 +20,7 @@ class UploadImage extends Component {
         };
         firestore
           .update({ collection: "meals", doc: mealDetail.id }, updMeal)
-          .then(() => {
-            this.setState({ image: null });
-          });
+          .then(() => toggleLoading());
       });
     });
   };
@@ -70,11 +67,4 @@ class UploadImage extends Component {
   }
 }
 
-export default compose(
-  firestoreConnect(props => [
-    { collection: "meals", storeAs: "meal", doc: props.mealDetail.id }
-  ]),
-  connect(({ firestore: { ordered } }, props) => ({
-    meal: ordered.meal && ordered.meal[0]
-  }))
-)(UploadImage);
+export default firestoreConnect()(UploadImage);

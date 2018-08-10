@@ -8,7 +8,6 @@ import { fontSecondary } from "../../../assets/font/font";
 
 import Spinner from "../../UI/Spinner";
 import Meal from "./Meal";
-import UploadImage from "../../UI/UploadImage";
 
 const mealWrapperStyle = {
   display: "flex",
@@ -44,7 +43,6 @@ class Meals extends Component {
           }}
         >
           <Meal mealDetail={meal} />
-          {!meal.img ? <UploadImage mealDetail={meal} /> : null}
         </li>
       ));
     }
@@ -62,7 +60,8 @@ class Meals extends Component {
               paddingBottom: "2rem"
             }}
           >
-            OBROCI<span style={{ fontSize: "3rem" }} className="material-icons">
+            OBROCI
+            <span style={{ fontSize: "3rem" }} className="material-icons">
               restaurant_menu
             </span>
           </span>
