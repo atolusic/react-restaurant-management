@@ -1,7 +1,6 @@
 import React from "react";
 import ReactFontFace from "react-font-face";
-// import { compose } from "redux";
-// import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 
 import { fontSecondary } from "../../../assets/font/font";
@@ -27,7 +26,7 @@ class Meal extends React.Component {
   render() {
     const {
       mealDetail,
-      mealDetail: { name, desc, price, specialOffer, discount, img }
+      mealDetail: { name, desc, price, specialOffer, discount, img, id }
     } = this.props;
 
     const { loading } = this.state;
@@ -116,9 +115,12 @@ class Meal extends React.Component {
               )}
             </div>
             <div>
-              <a className="waves-effect waves-light btn-small orange lighten-1">
+              <Link
+                to={`meals/${id}`}
+                className="waves-effect waves-light btn-small orange lighten-1"
+              >
                 <i className="material-icons">create</i>
-              </a>
+              </Link>
               <a
                 style={{ marginLeft: ".3rem" }}
                 className="waves-effect waves-light btn-small red darken-1"
