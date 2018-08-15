@@ -10,7 +10,8 @@ const Input = props => {
     inputType,
     classes,
     additionStyle,
-    icon
+    icon,
+    editMeal
   } = props;
 
   let input = null;
@@ -28,7 +29,9 @@ const Input = props => {
             onChange={onInputChange}
             required
           />
-          <label htmlFor={name}>{label}</label>
+          <label className={editMeal ? "active" : null} htmlFor={name}>
+            {label}
+          </label>
         </div>
       );
       return <div className="row">{input}</div>;
@@ -42,7 +45,9 @@ const Input = props => {
             value={value}
             onChange={onInputChange}
           />
-          <label htmlFor={name}>{label}</label>
+          <label className={editMeal ? "active" : null} htmlFor={name}>
+            {label}
+          </label>
         </div>
       );
       return <div className="row">{input}</div>;

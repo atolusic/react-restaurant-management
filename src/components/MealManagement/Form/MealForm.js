@@ -12,11 +12,18 @@ class MealForm extends Component {
     discount: false
   };
 
+  componentDidMount() {
+    const { meal, editMeal } = this.props;
+    if (editMeal) {
+      this.setState({ ...meal });
+    }
+  }
+
   onSubmit = e => {
     e.preventDefault();
 
-    const { name, price, desc, specialOffer, discount } = this.state;
-    const { firestore } = this.props;
+    const { name, price, desc, specialOffer, discount, id } = this.state;
+    const { firestore, editMeal } = this.props;
 
     const data = {
       name,
@@ -25,16 +32,21 @@ class MealForm extends Component {
       specialOffer,
       discount
     };
-    // dodaj vrijednosti iz forme u bazu i update-aj store
-    firestore.add({ collection: "meals" }, data);
-    // ocisti fieldove forme nakon dodavanja
-    this.setState({
-      name: "",
-      price: "",
-      desc: "",
-      specialOffer: false,
-      discount: false
-    });
+    if (editMeal) {
+      // ako editMeal prop postoji onda izvrsi update meal-a
+      firestore.update({ collection: "meals", doc: id }, data);
+    } else {
+      // dodaj vrijednosti iz forme u bazu i update-aj store
+      firestore.add({ collection: "meals" }, data);
+      // ocisti fieldove forme nakon dodavanja
+      this.setState({
+        name: "",
+        price: "",
+        desc: "",
+        specialOffer: false,
+        discount: false
+      });
+    }
   };
 
   onInputChange = e => {
@@ -46,6 +58,8 @@ class MealForm extends Component {
 
   render() {
     const { name, desc, price, specialOffer, discount } = this.state;
+    const { editMeal } = this.props;
+
     return (
       <form onSubmit={this.onSubmit}>
         <Input
@@ -56,6 +70,7 @@ class MealForm extends Component {
           onInputChange={this.onInputChange}
           inputType="input"
           classes="col m12"
+          editMeal={editMeal}
         />
         <Input
           inputType="textarea"
@@ -64,6 +79,7 @@ class MealForm extends Component {
           value={desc}
           name="desc"
           classes="col m12"
+          editMeal={editMeal}
         />
         <div className="row">
           <div className="col m6">
@@ -76,6 +92,7 @@ class MealForm extends Component {
               name="price"
               classes="col m12"
               icon
+              editMeal={editMeal}
             />
           </div>
           <div className="col m6">
@@ -104,7 +121,8 @@ class MealForm extends Component {
               className="btn-large waves-effect waves-light orange darken-2"
               type="submit"
             >
-              <i className="material-icons right">send</i> Dodaj
+              <i className="material-icons right">send</i>{" "}
+              {editMeal ? "Uredi" : "Dodaj"}
             </button>
           </div>
         </div>
