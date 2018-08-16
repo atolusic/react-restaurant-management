@@ -116,7 +116,7 @@ class Meal extends React.Component {
             </div>
             <div>
               <Link
-                to={`meals/${id}`}
+                to={{ pathname: `meals/${id}`, state: { spec: specialOffer } }}
                 className="waves-effect waves-light btn-small orange lighten-1"
               >
                 <i className="material-icons">create</i>

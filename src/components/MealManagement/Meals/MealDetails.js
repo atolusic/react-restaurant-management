@@ -141,8 +141,15 @@ const mapStateToProps = ({ firestore: { ordered } }) => ({
 });
 
 export default compose(
-  firestoreConnect(props => [
-    { collection: "meals", storeAs: "meal", doc: props.match.params.id }
-  ]),
+  firestoreConnect(props => {
+    console.log(props);
+    return [
+      {
+        collection: props.location.state.spec ? "specialOffer" : "meals",
+        storeAs: "meal",
+        doc: props.match.params.id
+      }
+    ];
+  }),
   connect(mapStateToProps)
 )(ReactFontFace(MealDetails, fontSecondary));

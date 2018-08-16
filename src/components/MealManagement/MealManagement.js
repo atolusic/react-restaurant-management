@@ -16,10 +16,8 @@ const MealManagement = props => {
             fontSize: "3.5rem"
           }}
         >
-          DODAJ NOVI OBROK<span
-            style={{ fontSize: "2rem" }}
-            className="material-icons"
-          >
+          DODAJ NOVI OBROK
+          <span style={{ fontSize: "2rem" }} className="material-icons">
             restaurant
           </span>
         </span>
