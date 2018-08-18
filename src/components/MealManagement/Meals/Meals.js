@@ -20,22 +20,40 @@ class Meals extends Component {
       </div>
     );
     // destructure meals iz propsa
-    const { meals } = this.props;
+    const { meals, spec } = this.props;
     if (meals) {
       // prikazi obroke
-      mealList = meals.map(meal => (
-        <li
-          key={meal.id}
-          style={{
-            width: "100%",
-            margin: ".7rem 0",
-            borderBottom: "2px solid #ccc",
-            paddingBottom: "1rem"
-          }}
-        >
-          <Meal mealDetail={meal} />
-        </li>
-      ));
+      mealList = meals.map(meal => {
+        if (spec && meal.specialOffer) {
+          return (
+            <li
+              key={meal.id}
+              style={{
+                width: "100%",
+                margin: ".7rem 0",
+                borderBottom: "2px solid #ccc",
+                paddingBottom: "1rem"
+              }}
+            >
+              <Meal mealDetail={meal} spec={this.props.spec} />
+            </li>
+          );
+        } else if (!spec && !meal.specialOffer) {
+          return (
+            <li
+              key={meal.id}
+              style={{
+                width: "100%",
+                margin: ".7rem 0",
+                borderBottom: "2px solid #ccc",
+                paddingBottom: "1rem"
+              }}
+            >
+              <Meal mealDetail={meal} spec={this.props.spec} />
+            </li>
+          );
+        }
+      });
     }
 
     return mealList;
@@ -44,10 +62,8 @@ class Meals extends Component {
 
 // hoc -> firestore api dohvati sve podatke ovisno o parametrima sa servera i popuni state, zatim se mapira state u props
 export default compose(
-  firestoreConnect(["specialOffer", "meals"]),
+  firestoreConnect(["meals"]),
   connect((state, props) => ({
-    meals: props.spec
-      ? state.firestore.ordered.specialOffer
-      : state.firestore.ordered.meals
+    meals: state.firestore.ordered.meals
   }))
 )(ReactFontFace(Meals, fontSecondary));

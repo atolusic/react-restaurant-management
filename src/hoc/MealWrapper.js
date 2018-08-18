@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Ml extends Component {
+class MealWrapper extends Component {
   render() {
     const { children, icn, fntSize, title, icnSize } = this.props;
     return (
@@ -35,4 +35,4 @@ const mealWrapperStyle = {
   width: "100%"
 };
 
-export default Ml;
+export default MealWrapper;

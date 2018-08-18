@@ -142,10 +142,9 @@ const mapStateToProps = ({ firestore: { ordered } }) => ({
 
 export default compose(
   firestoreConnect(props => {
-    console.log(props);
     return [
       {
-        collection: props.location.state.spec ? "specialOffer" : "meals",
+        collection: "meals",
         storeAs: "meal",
         doc: props.match.params.id
       }

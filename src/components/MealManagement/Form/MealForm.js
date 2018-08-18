@@ -34,13 +34,12 @@ class MealForm extends Component {
     };
     if (editMeal) {
       // ako editMeal prop postoji onda izvrsi update meal-a
+      if (specialOffer) {
+      }
       firestore.update({ collection: "meals", doc: id }, data);
     } else {
       // dodaj vrijednosti iz forme u bazu i update-aj store
-      firestore.add(
-        { collection: specialOffer ? "specialOffer" : "meals" },
-        data
-      );
+      firestore.add({ collection: "meals" }, data);
       // ocisti fieldove forme nakon dodavanja
       this.setState({
         name: "",

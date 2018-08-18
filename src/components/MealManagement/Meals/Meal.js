@@ -25,6 +25,7 @@ class Meal extends React.Component {
 
   render() {
     const {
+      spec,
       mealDetail,
       mealDetail: { name, desc, price, specialOffer, discount, img, id }
     } = this.props;
@@ -54,8 +55,8 @@ class Meal extends React.Component {
             ) : (
               <img
                 src={img ? img : noImg}
-                width="150"
-                height="130"
+                width={spec ? "100" : "150"}
+                height={spec ? "90" : "130"}
                 style={{ flex: 1, border: "2px solid #333", padding: ".2rem" }}
                 className="z-depth-3"
                 alt={name}
@@ -116,7 +117,7 @@ class Meal extends React.Component {
             </div>
             <div>
               <Link
-                to={{ pathname: `meals/${id}`, state: { spec: specialOffer } }}
+                to={{ pathname: `meals/${id}` }}
                 className="waves-effect waves-light btn-small orange lighten-1"
               >
                 <i className="material-icons">create</i>
