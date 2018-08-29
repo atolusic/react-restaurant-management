@@ -2,6 +2,8 @@ import React from "react";
 import ReactFontFace from "react-font-face";
 import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 import { fontSecondary } from "../../../assets/font/font";
 import noImg from "../../../assets/imgs/noImg.png";
@@ -139,6 +141,24 @@ class Meal extends React.Component {
               this.setState({ loading: !this.state.loading })
             }
           />
+        ) : null}
+        {spec ? (
+          <div
+            style={{
+              display: "flex",
+              marginTop: ".5rem",
+              alignItems: "center",
+              justifyContent: "space-between"
+            }}
+          >
+            <div style={{ width: "80%" }}>
+              <Dropdown
+                options={["options", "one"]}
+                placeholder="Prilog posebne ponude"
+              />
+            </div>
+            <button className="btn-small orange darken-2">Dodaj</button>
+          </div>
         ) : null}
       </div>
     );
