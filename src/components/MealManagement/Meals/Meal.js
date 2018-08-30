@@ -7,13 +7,34 @@ import "react-dropdown/style.css";
 
 import { fontSecondary } from "../../../assets/font/font";
 import noImg from "../../../assets/imgs/noImg.png";
+import showSpecialOfferItemDetails from "../../../assets/showSpecialOfferItemDetails";
 
 import Spinner from "../../UI/Spinner";
 import UploadImage from "../../UI/UploadImage";
 
 class Meal extends React.Component {
   state = {
-    loading: false
+    loading: false,
+    dpValue: null
+  };
+
+  onAddSOItemHandler = () => {
+    const {
+      mealDetail: { id },
+      firestore
+    } = this.props;
+
+    const { dpValue } = this.state;
+
+    const updateData = {
+      specialOfferItem: dpValue
+    };
+
+    firestore.update({ collection: "meals", doc: id }, updateData);
+  };
+
+  onDpChangeHandler = e => {
+    this.setState({ dpValue: e.value });
   };
 
   onDeleteClick = e => {
@@ -29,15 +50,43 @@ class Meal extends React.Component {
     const {
       spec,
       mealDetail,
-      mealDetail: { name, desc, price, specialOffer, discount, img, id }
+      mealDetail: {
+        name,
+        desc,
+        price,
+        specialOffer,
+        discount,
+        img,
+        id,
+        specialOfferItem
+      }
     } = this.props;
 
-    const { loading } = this.state;
+    const { loading, dpValue } = this.state;
+
+    const dpOptions = ["Coke", "Pivo", "Palacinka", "Sok", "Donut"];
 
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={mealStyle}>
-          <div style={{ display: "flex", flex: 2 }}>
+        <div
+          style={
+            spec
+              ? { display: "flex", flexDirection: "column", width: "100%" }
+              : mealStyle
+          }
+        >
+          <div
+            style={
+              spec
+                ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }
+                : { display: "flex", flex: 2 }
+            }
+          >
             {loading ? (
               <div
                 className="z-depth-3"
@@ -57,9 +106,9 @@ class Meal extends React.Component {
             ) : (
               <img
                 src={img ? img : noImg}
-                width={spec ? "100" : "150"}
-                height={spec ? "90" : "130"}
-                style={{ flex: 1, border: "2px solid #333", padding: ".2rem" }}
+                width={spec ? "140" : "150"}
+                height={spec ? "120" : "130"}
+                style={{ border: "2px solid #333", padding: ".2rem" }}
                 className="z-depth-3"
                 alt={name}
               />
@@ -69,7 +118,8 @@ class Meal extends React.Component {
                 display: "flex",
                 flexDirection: "column",
                 marginLeft: "1rem",
-                flex: 2
+                flex: 2,
+                textAlign: spec ? "center" : null
               }}
             >
               <p
@@ -89,48 +139,66 @@ class Meal extends React.Component {
           </div>
           <div
             style={{
-              flex: 1,
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "flex-end"
+              alignItems: spec ? "center" : null,
+              marginTop: spec ? "1rem" : null
             }}
           >
-            <p
+            {specialOfferItem ? (
+              <div
+                style={{
+                  fontFamily: "Haymaker",
+                  color: "#333",
+                  lineHeight: 0.2,
+                  fontSize: "3rem",
+                  display: "flex",
+                  alignItems: "center"
+                }}
+              >
+                <span>+</span>
+                {showSpecialOfferItemDetails(specialOfferItem)}
+              </div>
+            ) : null}
+            <div
               style={{
-                fontFamily: "Haymaker",
-                color: "#333",
-                fontSize: "1.3rem"
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                alignItems: "flex-end"
               }}
             >
-              {parseFloat(price).toFixed(2)} kn
-            </p>
-            <div>
-              {specialOffer && (
-                <p style={{ fontFamily: "Haymaker", fontSize: ".9rem" }}>
-                  ➥ posebna ponuda
-                </p>
-              )}
-              {discount && (
-                <p style={{ fontFamily: "Haymaker", fontSize: ".9rem" }}>
-                  ➥ akcijska cijena
-                </p>
-              )}
-            </div>
-            <div>
-              <Link
-                to={{ pathname: `meals/${id}` }}
-                className="waves-effect waves-light btn-small orange lighten-1"
+              <p
+                style={{
+                  fontFamily: "Haymaker",
+                  color: "#333",
+                  fontSize: "1.3rem"
+                }}
               >
-                <i className="material-icons">create</i>
-              </Link>
-              <a
-                style={{ marginLeft: ".3rem" }}
-                className="waves-effect waves-light btn-small red darken-1"
-                onClick={this.onDeleteClick}
-              >
-                <i className="material-icons">close</i>
-              </a>
+                {parseFloat(price).toFixed(2)} kn
+              </p>
+              <div>
+                {discount && (
+                  <p style={{ fontFamily: "Haymaker", fontSize: ".9rem" }}>
+                    ➥ akcijska cijena
+                  </p>
+                )}
+              </div>
+              <div>
+                <Link
+                  to={{ pathname: `meals/${id}` }}
+                  className="waves-effect waves-light btn-small orange lighten-1"
+                >
+                  <i className="material-icons">create</i>
+                </Link>
+                <a
+                  style={{ marginLeft: ".3rem" }}
+                  className="waves-effect waves-light btn-small red darken-1"
+                  onClick={this.onDeleteClick}
+                >
+                  <i className="material-icons">close</i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -143,22 +211,32 @@ class Meal extends React.Component {
           />
         ) : null}
         {spec ? (
-          <div
-            style={{
-              display: "flex",
-              marginTop: ".5rem",
-              alignItems: "center",
-              justifyContent: "space-between"
-            }}
-          >
-            <div style={{ width: "80%" }}>
-              <Dropdown
-                options={["options", "one"]}
-                placeholder="Prilog posebne ponude"
-              />
+          specialOfferItem ? null : (
+            <div
+              style={{
+                display: "flex",
+                marginTop: ".5rem",
+                alignItems: "center",
+                justifyContent: "space-between"
+              }}
+            >
+              <div style={{ width: "80%" }}>
+                <Dropdown
+                  options={dpOptions}
+                  placeholder="Prilog posebne ponude"
+                  value={dpValue}
+                  onChange={this.onDpChangeHandler}
+                />
+              </div>
+              <button
+                disabled={!dpValue}
+                onClick={this.onAddSOItemHandler}
+                className="btn-small orange darken-2"
+              >
+                Dodaj
+              </button>
             </div>
-            <button className="btn-small orange darken-2">Dodaj</button>
-          </div>
+          )
         ) : null}
       </div>
     );

@@ -9,7 +9,8 @@ class MealForm extends Component {
     price: "",
     desc: "",
     specialOffer: false,
-    discount: false
+    discount: false,
+    specialOfferItem: null
   };
 
   componentDidMount() {
