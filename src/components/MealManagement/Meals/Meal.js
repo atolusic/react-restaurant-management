@@ -220,7 +220,7 @@ class Meal extends React.Component {
                 justifyContent: "space-between"
               }}
             >
-              <div style={{ width: "80%" }}>
+              <div style={{ width: "80%", marginRight: ".5rem" }}>
                 <Dropdown
                   options={dpOptions}
                   placeholder="Prilog posebne ponude"

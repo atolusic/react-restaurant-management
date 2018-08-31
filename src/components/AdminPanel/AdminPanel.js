@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
-import MealManagement from "../MealManagement/MealManagement";
 import Meals from "../MealManagement/Meals/Meals";
 import MealWrapper from "../../hoc/MealWrapper";
+import BurgerIngredientsManager from "../MealManagement/BurgerIngredientsManager";
+import ManagementCard from "../UI/ManagementCard";
+import MealForm from "../MealManagement/Form/MealForm";
 
 class AdminPanel extends Component {
   render() {
@@ -18,8 +20,13 @@ class AdminPanel extends Component {
           height: "90vh"
         }}
       >
-        <div className="col m3">
-          <MealManagement />
+        <div className="col m3" style={{ height: "100%", overflowY: "auto" }}>
+          <ManagementCard icn="restaurant" title="DODAJ NOVI OBROK">
+            <MealForm />
+          </ManagementCard>
+          <ManagementCard icn="restaurant" title="BURGER MANAGER">
+            <BurgerIngredientsManager />
+          </ManagementCard>
         </div>
         <div className="col m5" style={{ height: "100%", overflowY: "auto" }}>
           <MealWrapper

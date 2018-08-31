@@ -23,7 +23,15 @@ class MealForm extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { name, price, desc, specialOffer, discount, id } = this.state;
+    const {
+      name,
+      price,
+      desc,
+      specialOffer,
+      discount,
+      id,
+      specialOfferItem
+    } = this.state;
     const { firestore, editMeal } = this.props;
 
     const data = {
@@ -31,11 +39,16 @@ class MealForm extends Component {
       price,
       desc,
       specialOffer,
-      discount
+      discount,
+      specialOfferItem
     };
     if (editMeal) {
       // ako editMeal prop postoji onda izvrsi update meal-a
-      if (specialOffer) {
+      if (!specialOffer) {
+        // ako specialOffer postavio na false u editu, postavi i item na false tako
+        // da se ne vidi medu obrocima koji nisu specijalna ponuda
+        this.setState({ specialOfferItem: null });
+        data.specialOfferItem = null;
       }
       firestore.update({ collection: "meals", doc: id }, data);
     } else {
