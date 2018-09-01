@@ -117,7 +117,7 @@ class Meal extends React.Component {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                marginLeft: "1rem",
+                margin: "0 .5rem 0 1rem ",
                 flex: 2,
                 textAlign: spec ? "center" : null
               }}

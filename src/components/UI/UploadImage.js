@@ -26,6 +26,8 @@ class UploadImage extends Component {
   };
 
   render() {
+    const { image } = this.state;
+
     return (
       <div
         style={{
@@ -59,6 +61,7 @@ class UploadImage extends Component {
           style={{ marginTop: "1rem" }}
           className="btn-small orange darken-2"
           onClick={this.onUploadClickHandler}
+          disabled={!image}
         >
           <i className="material-icons">file_upload</i>
         </button>
