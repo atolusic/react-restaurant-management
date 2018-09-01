@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Meals from "../MealManagement/Meals/Meals";
 import MealWrapper from "../../hoc/MealWrapper";
-import BurgerIngredientsManager from "../MealManagement/BurgerIngredientsManager";
+import BurgerIngredientsManager from "../MealManagement/BurgerIngredientsManager/BurgerIngredientsManager";
 import ManagementCard from "../UI/ManagementCard";
 import MealForm from "../MealManagement/Form/MealForm";
 
@@ -24,7 +24,7 @@ class AdminPanel extends Component {
           <ManagementCard icn="restaurant" title="DODAJ NOVI OBROK">
             <MealForm />
           </ManagementCard>
-          <ManagementCard icn="restaurant" title="BURGER MANAGER">
+          <ManagementCard title="BURGER MANAGER">
             <BurgerIngredientsManager />
           </ManagementCard>
         </div>
