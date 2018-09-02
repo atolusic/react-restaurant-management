@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { firestoreConnect } from "react-redux-firebase";
 
 import Input from "./Input";
+import Combobox from "../../UI/Combobox";
 
 class MealForm extends Component {
   state = {
@@ -10,7 +11,8 @@ class MealForm extends Component {
     desc: "",
     specialOffer: false,
     discount: false,
-    specialOfferItem: null
+    specialOfferItem: null,
+    successMsg: false
   };
 
   componentDidMount() {
@@ -50,7 +52,10 @@ class MealForm extends Component {
         this.setState({ specialOfferItem: null });
         data.specialOfferItem = null;
       }
-      firestore.update({ collection: "meals", doc: id }, data);
+      firestore.update({ collection: "meals", doc: id }, data).then(() => {
+        this.setState({ successMsg: true });
+        setTimeout(() => this.setState({ successMsg: false }), 2000);
+      });
     } else {
       // dodaj vrijednosti iz forme u bazu i update-aj store
       firestore.add({ collection: "meals" }, data);
@@ -60,20 +65,36 @@ class MealForm extends Component {
         price: "",
         desc: "",
         specialOffer: false,
-        discount: false
+        discount: false,
+        specialOfferItem: null
       });
     }
+  };
+
+  onDpChangeHandler = e => {
+    this.setState({ specialOfferItem: e.value });
   };
 
   onInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onCheckChange = e =>
-    this.setState({ [e.target.name]: !this.state[e.target.name] });
+  onCheckChange = e => {
+    this.setState({
+      [e.target.name]: !this.state[e.target.name]
+    });
+  };
 
   render() {
-    const { name, desc, price, specialOffer, discount } = this.state;
+    const { successMsg } = this.state;
+    const {
+      name,
+      desc,
+      price,
+      specialOffer,
+      discount,
+      specialOfferItem
+    } = this.state;
     const { editMeal } = this.props;
 
     return (
@@ -87,6 +108,7 @@ class MealForm extends Component {
           inputType="input"
           classes="col m12"
           editMeal={editMeal}
+          additionStyle={{ marginBottom: "0" }}
         />
         <Input
           inputType="textarea"
@@ -96,6 +118,7 @@ class MealForm extends Component {
           name="desc"
           classes="col m12"
           editMeal={editMeal}
+          additionStyle={{ marginBottom: "0" }}
         />
         <div className="row">
           <div className="col m6">
@@ -109,11 +132,13 @@ class MealForm extends Component {
               classes="col m12"
               icon
               editMeal={editMeal}
+              additionStyle={{ marginBottom: "0" }}
             />
           </div>
           <div className="col m6">
             <label>
               <input
+                disabled={specialOffer}
                 type="checkbox"
                 name="discount"
                 checked={discount}
@@ -123,6 +148,7 @@ class MealForm extends Component {
             </label>
             <label>
               <input
+                disabled={discount}
                 type="checkbox"
                 name="specialOffer"
                 checked={specialOffer}
@@ -132,14 +158,39 @@ class MealForm extends Component {
             </label>
           </div>
           <div className="col m12">
+            {specialOffer ? (
+              <div style={{ marginBottom: "1rem" }}>
+                {editMeal ? (
+                  <p style={{ marginBottom: ".3rem", color: "#333" }}>
+                    Prilog posebne ponude
+                  </p>
+                ) : null}
+                <Combobox
+                  dpValue={specialOfferItem}
+                  onDpChangeHandler={this.onDpChangeHandler}
+                />
+              </div>
+            ) : null}
             <button
               style={{ width: "100%" }}
-              className="btn-large waves-effect waves-light orange darken-2"
+              className="btn-small waves-effect waves-light orange darken-2"
               type="submit"
             >
               <i className="material-icons right">send</i>{" "}
               {editMeal ? "Uredi" : "Dodaj"}
             </button>
+            {editMeal && (
+              <p
+                style={{
+                  marginTop: ".5rem",
+                  color: "#333",
+                  opacity: successMsg ? 1 : 0,
+                  transition: "opacity 1s ease"
+                }}
+              >
+                Podaci uspješno pohranjeni!
+              </p>
+            )}
           </div>
         </div>
       </form>

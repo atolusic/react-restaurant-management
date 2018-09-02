@@ -44,6 +44,7 @@ const Input = props => {
             name={name}
             value={value}
             onChange={onInputChange}
+            style={{ height: "5rem", padding: ".5rem 0" }}
           />
           <label className={editMeal ? "active" : null} htmlFor={name}>
             {label}

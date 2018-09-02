@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -20,6 +21,9 @@ const Navigation = () => {
             marginRight: "2rem"
           }}
         >
+          <li>
+            <Link to={"/"}>Pocetna</Link>
+          </li>
           <li>
             <a href="#!">Registred User</a>
           </li>

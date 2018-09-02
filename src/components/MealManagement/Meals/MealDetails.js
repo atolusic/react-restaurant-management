@@ -15,7 +15,7 @@ const center = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  height: "80vh",
+  height: "90vh",
   width: "100%"
 };
 
@@ -60,7 +60,7 @@ class MealDetails extends Component {
           style={{
             border: ".5rem double #1a1a1a",
             backgroundColor: "#f7f7f7",
-            height: "70vh",
+            height: "80vh",
             width: "70%",
             display: "flex",
             justifyContent: "space-around",
@@ -131,7 +131,9 @@ class MealDetails extends Component {
     }
 
     return (
-      <div style={{ ...center, flexDirection: "column" }}>{mealDetails}</div>
+      <div style={{ ...center, flexDirection: "column", position: "relative" }}>
+        {mealDetails}
+      </div>
     );
   }
 }

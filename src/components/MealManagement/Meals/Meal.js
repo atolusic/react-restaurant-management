@@ -2,8 +2,6 @@ import React from "react";
 import ReactFontFace from "react-font-face";
 import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
 
 import { fontSecondary } from "../../../assets/font/font";
 import noImg from "../../../assets/imgs/noImg.png";
@@ -11,6 +9,7 @@ import showSpecialOfferItemDetails from "../../../assets/showSpecialOfferItemDet
 
 import Spinner from "../../UI/Spinner";
 import UploadImage from "../../UI/UploadImage";
+import Combobox from "../../UI/Combobox";
 
 class Meal extends React.Component {
   state = {
@@ -63,8 +62,6 @@ class Meal extends React.Component {
     } = this.props;
 
     const { loading, dpValue } = this.state;
-
-    const dpOptions = ["Coke", "Pivo", "Palacinka", "Sok", "Donut"];
 
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -168,18 +165,31 @@ class Meal extends React.Component {
                 alignItems: "flex-end"
               }}
             >
-              <p
+              <div
                 style={{
-                  fontFamily: "Haymaker",
-                  color: "#333",
-                  fontSize: "1.3rem"
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end"
                 }}
               >
-                {parseFloat(price).toFixed(2)} kn
-              </p>
-              <div>
+                <p
+                  style={{
+                    fontFamily: "Haymaker",
+                    color: "#333",
+                    fontSize: "1.3rem"
+                  }}
+                >
+                  {parseFloat(price).toFixed(2)} kn
+                </p>
                 {discount && (
-                  <p style={{ fontFamily: "Haymaker", fontSize: ".9rem" }}>
+                  <p
+                    style={{
+                      fontFamily: "Haymaker",
+                      fontSize: ".7rem",
+                      color: "#ef5350",
+                      fontWeight: 600
+                    }}
+                  >
                     ➥ akcijska cijena
                   </p>
                 )}
@@ -221,11 +231,9 @@ class Meal extends React.Component {
               }}
             >
               <div style={{ width: "80%", marginRight: ".5rem" }}>
-                <Dropdown
-                  options={dpOptions}
-                  placeholder="Prilog posebne ponude"
-                  value={dpValue}
-                  onChange={this.onDpChangeHandler}
+                <Combobox
+                  dpValue={dpValue}
+                  onDpChangeHandler={this.onDpChangeHandler}
                 />
               </div>
               <button
