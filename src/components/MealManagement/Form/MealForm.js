@@ -135,8 +135,14 @@ class MealForm extends Component {
               additionStyle={{ marginBottom: "0" }}
             />
           </div>
-          <div className="col m6">
-            <label>
+          <div className="col m6" style={{ marginBottom: ".5rem" }}>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: "1rem"
+              }}
+            >
               <input
                 disabled={specialOffer}
                 type="checkbox"
@@ -144,9 +150,16 @@ class MealForm extends Component {
                 checked={discount}
                 onChange={this.onCheckChange}
               />
-              <span>Akcijska cijena</span>
+              <span />
+              <p>Akcijska cijena</p>
             </label>
-            <label>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: "1rem"
+              }}
+            >
               <input
                 disabled={discount}
                 type="checkbox"
@@ -154,7 +167,8 @@ class MealForm extends Component {
                 checked={specialOffer}
                 onChange={this.onCheckChange}
               />
-              <span>Posebna ponuda</span>
+              <span />
+              <p>Posebna ponuda</p>
             </label>
           </div>
           <div className="col m12">

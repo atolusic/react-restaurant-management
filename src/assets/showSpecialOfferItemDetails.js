@@ -20,7 +20,7 @@ const showSpecialOfferItemDetails = item => {
           }}
         >
           <img width={50} height={50} src={Pivo} alt={alt} />
-          <span style={{ marginLeft: ".5rem" }}>Pivo po izboru</span>
+          <span style={{ marginLeft: ".5rem" }}>Pivo</span>
         </div>
       );
     case "Donut":
