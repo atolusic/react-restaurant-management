@@ -2,6 +2,7 @@ import React from "react";
 import ReactFontFace from "react-font-face";
 import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
+import Modal from "react-responsive-modal";
 
 import { fontSecondary } from "../../../assets/font/font";
 import noImg from "../../../assets/imgs/noImg.png";
@@ -14,7 +15,16 @@ import Combobox from "../../UI/Combobox";
 class Meal extends React.Component {
   state = {
     loading: false,
-    dpValue: null
+    dpValue: null,
+    open: false
+  };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
   };
 
   onAddSOItemHandler = () => {
@@ -61,7 +71,7 @@ class Meal extends React.Component {
       }
     } = this.props;
 
-    const { loading, dpValue } = this.state;
+    const { loading, dpValue, open } = this.state;
 
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -204,7 +214,7 @@ class Meal extends React.Component {
                 <a
                   style={{ marginLeft: ".3rem" }}
                   className="waves-effect waves-light btn-small red darken-1"
-                  onClick={this.onDeleteClick}
+                  onClick={this.onOpenModal}
                 >
                   <i className="material-icons">close</i>
                 </a>
@@ -246,6 +256,24 @@ class Meal extends React.Component {
             </div>
           )
         ) : null}
+        <Modal open={open} onClose={this.onCloseModal} center>
+          <h2 style={{ fontSize: "1.5rem" }}>
+            Obrok ce biti izbrisan iz menija. Jeste li Sigurni?
+          </h2>
+          <button
+            className="btn-small red darken-1"
+            onClick={this.onDeleteClick}
+          >
+            DA
+          </button>
+          <button
+            className="btn-small orange lighten-1"
+            style={{ marginLeft: ".5rem" }}
+            onClick={this.onCloseModal}
+          >
+            NE
+          </button>
+        </Modal>
       </div>
     );
   }

@@ -29,14 +29,13 @@ class MealDetails extends Component {
     discount: false
   };
 
-  static getDerivedStateFromProps(props, state) {
-    const { meal } = props;
-    if (meal) {
-      return {
-        ...meal
-      };
-    }
-    return null;
+  componentDidMount() {
+    const { firestore, match } = this.props;
+    firestore.get(`meals/${match.params.id}`).then(data => {
+      if (data.exists) {
+        this.setState({ ...data.data() });
+      }
+    });
   }
 
   render() {
@@ -48,7 +47,7 @@ class MealDetails extends Component {
       </div>
     );
 
-    if (this.props.meal) {
+    if (this.state.name) {
       const {
         meal,
         meal: { img, name }
