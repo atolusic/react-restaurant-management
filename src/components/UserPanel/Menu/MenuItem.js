@@ -1,25 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import PulseButton from "../../UI/PulseButton";
-
 import noImg from "../../../assets/imgs/noImg.png";
 import showSpecialOfferItemDetails from "../../../assets/showSpecialOfferItemDetails";
 
 class MenuItem extends Component {
   render() {
     const {
-      mealDetail,
-      mealDetail: {
-        name,
-        desc,
-        price,
-        specialOffer,
-        discount,
-        img,
-        id,
-        specialOfferItem
-      }
+      mealDetail: { name, desc, price, discount, img, id, specialOfferItem }
     } = this.props;
 
     return (

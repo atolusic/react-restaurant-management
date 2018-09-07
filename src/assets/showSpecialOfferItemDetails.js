@@ -72,7 +72,7 @@ const showSpecialOfferItemDetails = item => {
           }}
         >
           <img width={40} height={60} src={Coke} alt={alt} />
-          <span style={{ marginLeft: ".5rem" }}>Coca Cola</span>
+          <span style={{ marginLeft: ".5rem" }}>Cola</span>
         </div>
       );
   }

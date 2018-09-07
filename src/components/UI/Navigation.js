@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Logo from "../../assets/logo/logo.png";
+import Logo from "../../assets/logo/burger.png";
 
 const Navigation = () => {
   return (
@@ -16,15 +16,32 @@ const Navigation = () => {
     >
       <Link
         style={{
-          fontFamily: "Blanch Caps Inline Regular",
+          fontFamily: "Haymaker",
           paddingLeft: "1rem",
-          fontWeight: 500
+          fontWeight: 500,
+          display: "flex",
+          alignItems: "center"
         }}
         to="/"
       >
-        <span style={{ fontSize: "3rem" }}>Sweet</span>
-        <span style={{ color: "#333", fontSize: "3.5rem" }}>BURGER</span>
-        <span style={{ fontSize: "3rem" }}>o' mine</span>
+        <span
+          style={{
+            fontSize: "1rem"
+          }}
+        >
+          Sweet
+        </span>
+
+        <img src={Logo} alt="Logo" width="50" height="50" />
+
+        <span
+          style={{
+            fontSize: "1rem",
+            position: "relative"
+          }}
+        >
+          o'mine
+        </span>
       </Link>
     </nav>
   );
