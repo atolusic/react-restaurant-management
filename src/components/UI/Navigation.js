@@ -1,37 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Logo from "../../assets/logo/logo.png";
+
 const Navigation = () => {
   return (
-    <nav>
-      <div className="nav-wrapper orange lighten-1">
-        <a
-          href="#!"
-          className="brand-logo"
-          style={{
-            marginLeft: "2rem"
-          }}
-        >
-          Ime aplikacije
-        </a>
-        <ul
-          id="nav-mobile"
-          className="right hide-on-med-and-down"
-          style={{
-            marginRight: "2rem"
-          }}
-        >
-          <li>
-            <Link to={"/"}>Pocetna</Link>
-          </li>
-          <li>
-            <a href="#!">Registred User</a>
-          </li>
-          <li>
-            <a href="#!">Logout</a>
-          </li>
-        </ul>
-      </div>
+    <nav
+      style={{
+        height: "7.5vh",
+        width: "100%",
+        display: "flex",
+        alignItems: "center"
+      }}
+      className="orange lighten-1"
+    >
+      <Link
+        style={{
+          fontFamily: "Blanch Caps Inline Regular",
+          paddingLeft: "1rem",
+          fontWeight: 500
+        }}
+        to="/"
+      >
+        <span style={{ fontSize: "3rem" }}>Sweet</span>
+        <span style={{ color: "#333", fontSize: "3.5rem" }}>BURGER</span>
+        <span style={{ fontSize: "3rem" }}>o' mine</span>
+      </Link>
     </nav>
   );
 };

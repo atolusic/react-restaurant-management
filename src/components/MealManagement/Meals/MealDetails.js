@@ -26,16 +26,20 @@ class MealDetails extends Component {
     price: "",
     desc: "",
     specialOffer: false,
-    discount: false
+    discount: false,
+    img: null
   };
 
-  componentDidMount() {
-    const { firestore, match } = this.props;
-    firestore.get(`meals/${match.params.id}`).then(data => {
-      if (data.exists) {
-        this.setState({ ...data.data() });
+  static getDerivedStateFromProps(props, state) {
+    const { meal } = props;
+    if (meal) {
+      if (meal.id === props.match.params.id) {
+        return {
+          ...meal
+        };
       }
-    });
+    }
+    return null;
   }
 
   render() {

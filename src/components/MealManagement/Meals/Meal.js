@@ -2,7 +2,6 @@ import React from "react";
 import ReactFontFace from "react-font-face";
 import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
-import Modal from "react-responsive-modal";
 
 import { fontSecondary } from "../../../assets/font/font";
 import noImg from "../../../assets/imgs/noImg.png";
@@ -11,6 +10,7 @@ import showSpecialOfferItemDetails from "../../../assets/showSpecialOfferItemDet
 import Spinner from "../../UI/Spinner";
 import UploadImage from "../../UI/UploadImage";
 import Combobox from "../../UI/Combobox";
+import Popup from "../../UI/Popup";
 
 class Meal extends React.Component {
   state = {
@@ -59,16 +59,7 @@ class Meal extends React.Component {
     const {
       spec,
       mealDetail,
-      mealDetail: {
-        name,
-        desc,
-        price,
-        specialOffer,
-        discount,
-        img,
-        id,
-        specialOfferItem
-      }
+      mealDetail: { name, desc, price, discount, img, id, specialOfferItem }
     } = this.props;
 
     const { loading, dpValue, open } = this.state;
@@ -256,24 +247,13 @@ class Meal extends React.Component {
             </div>
           )
         ) : null}
-        <Modal open={open} onClose={this.onCloseModal} center>
-          <h2 style={{ fontSize: "1.5rem" }}>
-            Obrok ce biti izbrisan iz menija. Jeste li Sigurni?
-          </h2>
-          <button
-            className="btn-small red darken-1"
-            onClick={this.onDeleteClick}
-          >
-            DA
-          </button>
-          <button
-            className="btn-small orange lighten-1"
-            style={{ marginLeft: ".5rem" }}
-            onClick={this.onCloseModal}
-          >
-            NE
-          </button>
-        </Modal>
+        <Popup
+          header="Obrok ce biti izbrisan iz menija. Jeste li Sigurni?"
+          state={open}
+          onClose={this.onCloseModal}
+          onClosePopup={this.onCloseModal}
+          onDeleteClick={this.onDeleteClick}
+        />
       </div>
     );
   }

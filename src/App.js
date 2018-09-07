@@ -6,18 +6,20 @@ import "./App.css";
 import Layout from "./hoc/Layout";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import MealDetails from "./components/MealManagement/Meals/MealDetails";
+import Menu from "./components/UserPanel/UserPanel";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <Layout>
-            <Switch>
+          <Switch>
+            <Route path="/menu" component={Menu} />
+            <Layout>
               <Route exact path="/" component={AdminPanel} />
               <Route path="/meals/:id" component={MealDetails} />
-            </Switch>
-          </Layout>
+            </Layout>
+          </Switch>
         </div>
       </Router>
     );

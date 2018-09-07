@@ -12,7 +12,8 @@ class MealForm extends Component {
     specialOffer: false,
     discount: false,
     specialOfferItem: null,
-    successMsg: false
+    successMsg: false,
+    img: null
   };
 
   componentDidMount() {
@@ -32,7 +33,8 @@ class MealForm extends Component {
       specialOffer,
       discount,
       id,
-      specialOfferItem
+      specialOfferItem,
+      img
     } = this.state;
     const { firestore, editMeal } = this.props;
 
@@ -42,8 +44,10 @@ class MealForm extends Component {
       desc,
       specialOffer,
       discount,
-      specialOfferItem
+      specialOfferItem,
+      img
     };
+
     if (editMeal) {
       // ako editMeal prop postoji onda izvrsi update meal-a
       if (!specialOffer) {
