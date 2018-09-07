@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Logo from "../../assets/logo/burger.png";
+import Logo from "../../assets/logo/logo2.jpg";
 
 const Navigation = () => {
   return (
@@ -26,18 +26,20 @@ const Navigation = () => {
       >
         <span
           style={{
-            fontSize: "1rem"
+            fontSize: "1rem",
+            marginRight: ".2rem"
           }}
         >
           Sweet
         </span>
 
-        <img src={Logo} alt="Logo" width="50" height="50" />
+        <img src={Logo} alt="Logo" width="45" height="45" />
 
         <span
           style={{
             fontSize: "1rem",
-            position: "relative"
+            position: "relative",
+            marginLeft: ".2rem"
           }}
         >
           o'mine

@@ -75,6 +75,8 @@ const showSpecialOfferItemDetails = item => {
           <span style={{ marginLeft: ".5rem" }}>Cola</span>
         </div>
       );
+    default:
+      return null;
   }
 };
 

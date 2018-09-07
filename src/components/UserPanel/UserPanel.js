@@ -2,6 +2,7 @@ import React from "react";
 
 import MealWrapper from "../../hoc/MealWrapper";
 import MenuItems from "./Menu/MenuItems";
+import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 
 const UserPanel = () => {
   return (
@@ -27,7 +28,9 @@ const UserPanel = () => {
         </MealWrapper>
       </div>
       <div className="col m4" style={{ height: "100%", overflowY: "auto" }}>
-        <MealWrapper>ff</MealWrapper>
+        <MealWrapper title="Naparavi hamby!" fntSize="4rem">
+          <BurgerBuilder />
+        </MealWrapper>
       </div>
     </div>
   );
