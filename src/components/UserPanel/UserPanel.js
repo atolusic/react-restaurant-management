@@ -28,7 +28,7 @@ const UserPanel = () => {
         </MealWrapper>
       </div>
       <div className="col m4" style={{ height: "100%", overflowY: "auto" }}>
-        <MealWrapper title="Naparavi hamby!" fntSize="4rem">
+        <MealWrapper title="Napravi hamby!" fntSize="4rem">
           <BurgerBuilder />
         </MealWrapper>
       </div>

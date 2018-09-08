@@ -16,16 +16,16 @@ const BurgerIngredient = props => {
         </div>
       );
       break;
-    case "meat":
+    case "pljeskavica":
       ingredient = <div className={classes.Meat} />;
       break;
-    case "cheese":
+    case "sir":
       ingredient = <div className={classes.Cheese} />;
       break;
-    case "bacon":
+    case "slanina":
       ingredient = <div className={classes.Bacon} />;
       break;
-    case "salad":
+    case "salata":
       ingredient = <div className={classes.Salad} />;
       break;
     default:

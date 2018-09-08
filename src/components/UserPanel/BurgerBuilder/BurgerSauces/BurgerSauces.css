@@ -1,0 +1,24 @@
+.BurgerSauces {
+  display: flex;
+  font-family: default;
+}
+
+.BurgerSauces p:first-child {
+  font-family: "Haymaker";
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+.BurgerSauces [type="checkbox"] + span:not(.lever) {
+  padding-left: 25px;
+  margin-right: 0.5rem;
+}
+
+.BurgerSauces p {
+  padding: 0 0.2rem;
+}
+
+.Checkbox-orange[type="checkbox"].filled-in:checked + label:after {
+  border: 2px solid #ff9800;
+  background-color: #ff9800;
+}

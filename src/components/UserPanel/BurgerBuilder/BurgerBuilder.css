@@ -1,0 +1,10 @@
+.BurgerBuilder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.SubmitBurgerBtn {
+  margin-top: 0.6rem;
+}

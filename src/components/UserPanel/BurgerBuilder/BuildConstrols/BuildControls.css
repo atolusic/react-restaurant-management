@@ -1,9 +1,19 @@
 .BuildControls {
   width: 100%;
-  font-family: "Haymaker";
   color: #333;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 1rem;
+}
+
+.Price {
+  margin-bottom: 1rem !important;
+  font-family: "Haymaker";
+}
+
+.Price span {
+  color: #ffa726;
+  font-weight: 600;
 }

@@ -3,14 +3,19 @@ import React from "react";
 import classes from "./Burger.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
-const Burger = () => {
+const Burger = props => {
+  const { ings } = props;
+  const transformedIngs = Object.keys(ings).map(ing => {
+    return [...Array(ings[ing])].map((_, i) => {
+      // bitan je length, nebitno s cime je popunjen array
+      return <BurgerIngredient key={ing + i} type={ing} />;
+    });
+  });
+
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type="bread-top" />
-      <BurgerIngredient type="cheese" />
-      <BurgerIngredient type="meat" />
-      <BurgerIngredient type="bacon" />
-      <BurgerIngredient type="salad" />
+      {transformedIngs}
       <BurgerIngredient type="bread-bottom" />
     </div>
   );
