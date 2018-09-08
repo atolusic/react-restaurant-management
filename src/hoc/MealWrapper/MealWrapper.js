@@ -15,7 +15,9 @@ class MealWrapper extends Component {
       icnSize,
       clr,
       myhamby,
-      desc
+      desc,
+      fntFamily,
+      additionStyle
     } = this.props;
 
     return (
@@ -23,12 +25,17 @@ class MealWrapper extends Component {
         <div className="card-content grey-text">
           <span
             className={`card-title ${classes.Header}`}
-            style={{ fontSize: fntSize, color: clr }}
+            style={{
+              fontSize: fntSize,
+              color: clr,
+              fontFamily: fntFamily,
+              ...additionStyle
+            }}
           >
             {myhamby ? (
               <div>
                 <span className={classes.Title}>sweet</span>
-                <span>{title}</span>
+                <span className={classes.BurgerTitle}>{title}</span>
                 <span className={classes.Title}>o' mine</span>
               </div>
             ) : (

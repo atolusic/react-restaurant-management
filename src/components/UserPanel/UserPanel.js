@@ -3,6 +3,9 @@ import React from "react";
 import MealWrapper from "../../hoc/MealWrapper/MealWrapper";
 import MenuItems from "./Menu/MenuItems";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
+import Orders from "./Orders/Orders";
+
+import classes from "./UserPanel.css";
 
 const UserPanel = () => {
   return (
@@ -28,8 +31,29 @@ const UserPanel = () => {
         </MealWrapper>
       </div>
       <div className="col m4" style={{ height: "100%", overflowY: "auto" }}>
-        <MealWrapper title="Napravi hamby!" fntSize="4rem">
+        <MealWrapper
+          title="Napravi hamby!"
+          fntSize="2rem"
+          fntFamily="Haymaker"
+          additionStyle={{
+            color: "#333",
+            textShadow: "2px 2px 2px rgba(150, 150, 150, 1)"
+          }}
+        >
           <BurgerBuilder />
+        </MealWrapper>
+      </div>
+      <div className="col m3" style={{ height: "100%", overflowY: "auto" }}>
+        <MealWrapper
+          fntSize="2rem"
+          fntFamily="Haymaker"
+          title="Kosarica"
+          additionStyle={{
+            color: "#333",
+            textShadow: "2px 2px 2px rgba(150, 150, 150, 1)"
+          }}
+        >
+          <Orders />
         </MealWrapper>
       </div>
     </div>
