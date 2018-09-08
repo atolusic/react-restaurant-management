@@ -1,0 +1,25 @@
+.MealWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.Header {
+  text-align: center;
+  border-bottom: 3px double #333;
+  padding-bottom: 1rem;
+  font-family: "Blanch Caps Inline Regular";
+}
+
+.Title {
+  font-size: 4rem;
+  color: #ffa726;
+}
+
+.Desc {
+  font-family: "Haymaker";
+  font-size: 1.5rem;
+  color: #ffa726;
+  font-weight: 500;
+}

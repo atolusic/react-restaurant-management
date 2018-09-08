@@ -1,6 +1,6 @@
 import React from "react";
 
-import MealWrapper from "../../hoc/MealWrapper";
+import MealWrapper from "../../hoc/MealWrapper/MealWrapper";
 import MenuItems from "./Menu/MenuItems";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 

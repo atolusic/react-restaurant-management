@@ -6,11 +6,11 @@ import classes from "./BuildControls.css";
 
 class BuildControls extends Component {
   render() {
-    return (
-      <div className={classes.BuildControls}>
-        <BuildControl text="salata" />
-      </div>
-    );
+    const buildCntrlLabels = ["salata", "pljeskavica", "slanina", "sir"];
+    let buildCntrls = buildCntrlLabels.map(item => (
+      <BuildControl key={item} text={item} />
+    ));
+    return <div className={classes.BuildControls}>{buildCntrls}</div>;
   }
 }
 

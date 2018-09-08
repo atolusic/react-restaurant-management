@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Meals from "../MealManagement/Meals/Meals";
-import MealWrapper from "../../hoc/MealWrapper";
+import MealWrapper from "../../hoc/MealWrapper/MealWrapper";
 import BurgerIngredientsManager from "../MealManagement/BurgerIngredientsManager/BurgerIngredientsManager";
 import ManagementCard from "../UI/ManagementCard";
 import MealForm from "../MealManagement/Form/MealForm";
