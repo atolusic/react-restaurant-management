@@ -1,7 +1,7 @@
 import React from "react";
 
 import MealWrapper from "../../hoc/MealWrapper/MealWrapper";
-import MenuItems from "./Menu/MenuItems";
+import MenuItems from "./Menu/MenuItems/MenuItems";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 import Orders from "./Orders/Orders";
 
@@ -32,7 +32,7 @@ const UserPanel = () => {
       </div>
       <div className="col m4" style={{ height: "100%", overflowY: "auto" }}>
         <MealWrapper
-          title="Napravi hamby!"
+          title="Napravi burger!"
           fntSize="2rem"
           fntFamily="Haymaker"
           additionStyle={{
@@ -50,7 +50,8 @@ const UserPanel = () => {
           title="Kosarica"
           additionStyle={{
             color: "#333",
-            textShadow: "2px 2px 2px rgba(150, 150, 150, 1)"
+            textShadow: "2px 2px 2px rgba(150, 150, 150, 1)",
+            border: 0
           }}
         >
           <Orders />

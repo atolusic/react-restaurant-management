@@ -1,5 +1,6 @@
 import React from "react";
 import ReactFontFace from "react-font-face";
+import { Link } from "react-router-dom";
 
 import classes from "./LandingPage.css";
 import { fontSecondary } from "../../../assets/font/font";
@@ -9,16 +10,19 @@ const LandingPage = () => {
     <div className={classes.LandingPage}>
       <div className={classes.MoveUp}>
         <button className={`btn-small orange lighten-2 ${classes.AdmBtn}`}>
-          <i class="material-icons">pan_tool</i>
+          <i className="material-icons">pan_tool</i>
         </button>
         <span>sweet</span>
         <span className={classes.BurgerTitle}>Burger</span>
         <span>o'mine</span>
         <p>Burgers N' Snacks</p>
         <div className={classes.LPBtns}>
-          <button className="btn-large waves-effect waves-light orange lighten-2">
+          <Link
+            to="/menu"
+            className="btn-large waves-effect waves-light orange lighten-2"
+          >
             Ulaz
-          </button>
+          </Link>
         </div>
       </div>
     </div>

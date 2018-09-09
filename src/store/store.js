@@ -1,8 +1,10 @@
 import { createStore, combineReducers, compose } from "redux";
 import firebase from "firebase";
 import "firebase/firestore";
+// Reducers
 import { reactReduxFirebase, firebaseReducer } from "react-redux-firebase";
 import { reduxFirestore, firestoreReducer } from "redux-firestore";
+import orderReducer from "./reducers/orderReducer";
 
 // firebase cfg
 var firebaseConfig = {
@@ -35,7 +37,8 @@ const createStoreWithFirebase = compose(
 // root reducer
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  orders: orderReducer
 });
 
 // Create init state

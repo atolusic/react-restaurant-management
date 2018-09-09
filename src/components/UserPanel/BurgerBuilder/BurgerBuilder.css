@@ -5,6 +5,8 @@
   align-items: center;
 }
 
-.SubmitBurgerBtn {
-  margin-top: 0.6rem;
+.SpinnerDiv {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }

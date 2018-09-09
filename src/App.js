@@ -17,10 +17,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/test" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
             <Route path="/menu" component={Menu} />
             <Layout>
-              <Route exact path="/" component={AdminPanel} />
+              <Route path="/adminpanel" component={AdminPanel} />
               <Route path="/meals/:id" component={MealDetails} />
             </Layout>
           </Switch>

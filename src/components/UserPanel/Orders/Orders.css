@@ -1,0 +1,35 @@
+.OrdersDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.PriceAndName {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.OrderLi {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  color: #333;
+  border-bottom: 1px solid #000;
+}
+
+.Total {
+  border-bottom: 3px solid #000;
+  padding: 1rem 0;
+  border-top: 3px double #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Total p {
+  font-weight: 600;
+  color: #333;
+}
+
+.Sauces {
+  display: flex;
+}

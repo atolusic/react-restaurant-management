@@ -1,0 +1,83 @@
+.MenuItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.MenuItemDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ImgNameAndDescDiv {
+  display: flex;
+  flex: 2;
+}
+
+.NameAndDescDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5rem 0 1rem;
+  flex: 2;
+}
+
+.Name {
+  font-family: "Haymaker";
+  color: #333;
+  letter-spacing: 0.2rem;
+  font-size: 1.6rem;
+}
+
+.Desc {
+  width: 100%;
+}
+
+.Img {
+  border: 2px solid #333;
+  padding: 0.2rem;
+}
+
+.SpecialOfferItemDiv {
+  font-family: "Haymaker";
+  color: #333;
+  line-height: 0.2;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.PriceAndButtonsDiv {
+  display: flex;
+}
+
+.PriceAndButtonsChildDiv {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.PriceAndDiscountDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.Price {
+  font-family: "Haymaker";
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.Discount {
+  font-family: "Haymaker";
+  font-size: 0.7rem;
+  color: #ef5350;
+  font-weight: 600;
+}
+
+.ShoppingCartIcon {
+  font-size: 1.5rem;
+}

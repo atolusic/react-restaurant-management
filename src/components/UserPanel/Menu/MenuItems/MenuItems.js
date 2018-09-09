@@ -3,8 +3,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 
-import Spinner from "../../UI/Spinner";
-import MenuItem from "./MenuItem";
+import Spinner from "../../../UI/Spinner";
+import MenuItem from "../MenuItem/MenuItem";
 
 const MenuItems = props => {
   let mealList = (

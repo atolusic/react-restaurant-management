@@ -18,9 +18,9 @@ class BurgerSauces extends React.Component {
       prevState => ({ [name]: !prevState[name] }),
       () => {
         if (this.state[name]) {
-          this.props.sauceUpdatePrice(true);
+          this.props.sauceUpdatePrice(true, { ...this.state });
         } else {
-          this.props.sauceUpdatePrice();
+          this.props.sauceUpdatePrice(false, { ...this.state });
         }
       }
     );

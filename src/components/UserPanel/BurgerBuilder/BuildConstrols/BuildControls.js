@@ -1,13 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import BuildControl from "./BuildControl/BuildControl";
+import { addMealToOrders } from "../../../../store/actions/orderActions";
 
 import classes from "./BuildControls.css";
 import BurgerSauces from "../BurgerSauces/BurgerSauces";
 
 class BuildControls extends Component {
   state = {
-    price: 5
+    price: 5,
+    sauces: {
+      ketchup: false,
+      mayo: false,
+      mustard: false
+    }
   };
 
   // ovisno o sastojku update-aj cijenu, fja se koristi i za dodavanje
@@ -47,12 +54,32 @@ class BuildControls extends Component {
     }
   };
 
+  onBurgerSubmitHandler = () => {
+    const { price, sauces } = this.state;
+    const { ings, addMealToOrders } = this.props;
+    let payload = {
+      price,
+      ings,
+      name: "Sweet Burger",
+      // kreiranje svog id-a radi counta
+      id:
+        toString(ings.salata + ings.slanina + ings.pljeskavica + ings.sir) +
+        JSON.stringify(sauces),
+      count: 1,
+      sauces: {
+        ...sauces
+      }
+    };
+    addMealToOrders(payload);
+  };
+
   // ovisno o odabranom umaku update-aj cijenu
-  sauceUpdatePrice = plus => {
+  sauceUpdatePrice = (plus, sauces) => {
     if (plus) {
-      this.setState({ price: this.state.price + 2 });
+      // također dohvati i umake zbog submit ordera
+      this.setState({ price: this.state.price + 2, sauces: { ...sauces } });
     } else {
-      this.setState({ price: this.state.price - 2 });
+      this.setState({ price: this.state.price - 2, sauces: { ...sauces } });
     }
   };
 
@@ -63,11 +90,17 @@ class BuildControls extends Component {
   };
 
   render() {
-    const { onAddIngHandler, onDeleteIngHandler, ings } = this.props;
+    const {
+      onAddIngHandler,
+      onDeleteIngHandler,
+      ings,
+      disableBtn,
+      disableControls
+    } = this.props;
     const { price } = this.state;
     let arrayOfIngs = [];
     // array od sastojaka *** [{salata: 2}, {slanina: 3} ...] ***
-    this.arrayOfIngs(arrayOfIngs, ings);
+    this.arrayOfIngs(arrayOfIngs, ings); // STAO SAM KOD DISABLEA BUILD KONTROLSA
     let buildCntrls = arrayOfIngs.map((item, i) => (
       <BuildControl
         updatePrice={this.updatePrice}
@@ -86,9 +119,19 @@ class BuildControls extends Component {
         </p>
         {buildCntrls}
         <BurgerSauces sauceUpdatePrice={this.sauceUpdatePrice} />
+        <button
+          onClick={this.onBurgerSubmitHandler}
+          disabled={disableBtn}
+          className={`btn small amber darken-1 ${classes.SubmitBurgerBtn}`}
+        >
+          Potvrdi
+        </button>
       </div>
     );
   }
 }
 
-export default BuildControls;
+export default connect(
+  null,
+  { addMealToOrders }
+)(BuildControls);
