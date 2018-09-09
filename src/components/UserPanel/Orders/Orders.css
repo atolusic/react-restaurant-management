@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .OrderLi {
@@ -36,4 +37,28 @@
 
 .Checkout {
   margin-top: 0.6rem;
+}
+
+.NameAndRemove {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RemoveFromCart {
+  background-color: #ef5350;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Name {
+  padding-right: 0.3rem;
 }

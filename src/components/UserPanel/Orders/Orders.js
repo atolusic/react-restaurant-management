@@ -1,22 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { deleteFromOrders } from "../../../store/actions/orderActions";
+
 import classes from "./Orders.css";
 
 class Orders extends Component {
   render() {
     const {
-      orders: { orders }
+      orders: { orders },
+      deleteFromOrders
     } = this.props;
 
     let orderList = orders.map((order, i) => {
       return (
         <li className={classes.OrderLi} key={order.id + i + order.price}>
           <div className={classes.PriceAndName}>
-            <p>
-              {order.count} x {order.name}
-              {order.specialOfferItem ? ` + ${order.specialOfferItem}` : null}
-            </p>
+            <div className={classes.NameAndRemove}>
+              <p className={classes.Name}>
+                {order.count} x {order.name}
+                {order.specialOfferItem ? ` + ${order.specialOfferItem}` : null}
+              </p>
+              <p
+                onClick={() => deleteFromOrders(order.id)}
+                className={classes.RemoveFromCart}
+              >
+                x
+              </p>
+            </div>
             <p>{parseFloat(order.price).toFixed(2)} kn</p>
           </div>
           {order.name === "Sweet Burger" && (
@@ -65,4 +76,7 @@ const mapStateToProps = state => ({
   orders: state.orders
 });
 
-export default connect(mapStateToProps)(Orders);
+export default connect(
+  mapStateToProps,
+  { deleteFromOrders }
+)(Orders);

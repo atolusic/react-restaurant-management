@@ -57,14 +57,21 @@ class BuildControls extends Component {
   onBurgerSubmitHandler = () => {
     const { price, sauces } = this.state;
     const { ings, addMealToOrders } = this.props;
+    const id = {
+      salata: ings.salata,
+      slanina: ings.slanina,
+      pljeskavica: ings.pljeskavica,
+      sir: ings.sir,
+      majoneza: sauces.mayo,
+      ketchup: sauces.ketchup,
+      senf: sauces.mustard
+    };
     let payload = {
       price,
       ings,
       name: "Sweet Burger",
       // kreiranje svog id-a radi counta
-      id:
-        toString(ings.salata + ings.slanina + ings.pljeskavica + ings.sir) +
-        JSON.stringify(sauces),
+      id: JSON.stringify(id),
       count: 1,
       sauces: {
         ...sauces

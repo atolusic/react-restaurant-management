@@ -1,4 +1,4 @@
-import { ADD_TO_ORDERS } from "../actions/types";
+import { ADD_TO_ORDERS, DELETE_FROM_ORDERS } from "../actions/types";
 
 const initialState = {
   orders: []
@@ -37,6 +37,11 @@ export default (state = initialState, action) => {
           orders: [...state.orders, action.payload]
         };
       }
+    case DELETE_FROM_ORDERS:
+      let ord = state.orders.filter(item => item.id !== action.payload);
+      return {
+        orders: ord
+      };
     default:
       return state;
   }
