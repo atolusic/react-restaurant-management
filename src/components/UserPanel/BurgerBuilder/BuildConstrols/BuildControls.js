@@ -95,7 +95,8 @@ class BuildControls extends Component {
       onDeleteIngHandler,
       ings,
       disableBtn,
-      disableControls
+      disableControls,
+      disableIngs
     } = this.props;
     const { price } = this.state;
     let arrayOfIngs = [];
@@ -103,6 +104,11 @@ class BuildControls extends Component {
     this.arrayOfIngs(arrayOfIngs, ings); // STAO SAM KOD DISABLEA BUILD KONTROLSA
     let buildCntrls = arrayOfIngs.map((item, i) => (
       <BuildControl
+        // iz propsa sam dobio obj sa sastojcima koji su disabled, dok prolazim
+        // array sa sastojcima pristupam objektu iz propsa i na osnovu toga dobijem t/f treba
+        // li disableat ing
+        disableThisIng={disableIngs[Object.keys(item)[0]]}
+        disableControls={disableControls}
         updatePrice={this.updatePrice}
         onAddIngHandler={onAddIngHandler}
         onDeleteIngHandler={onDeleteIngHandler}

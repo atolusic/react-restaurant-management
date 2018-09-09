@@ -4,7 +4,7 @@ import classes from "./Burger.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const Burger = props => {
-  const { ings } = props;
+  const { ings, disableBurger } = props;
   const transformedIngs = Object.keys(ings).map(ing => {
     return [...Array(ings[ing])].map((_, i) => {
       // bitan je length, nebitno s cime je popunjen array
@@ -15,6 +15,9 @@ const Burger = props => {
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type="bread-top" />
+      {!disableBurger && (
+        <button className={classes.DisabledNotation}>DISABLED</button>
+      )}
       {transformedIngs}
       <BurgerIngredient type="bread-bottom" />
     </div>

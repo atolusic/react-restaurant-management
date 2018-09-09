@@ -48,6 +48,14 @@ class Orders extends Component {
           <p>Ukupno:</p>
           <p>{parseFloat(totalPrice).toFixed(2)} kn</p>
         </div>
+        <button
+          disabled={!orders.length}
+          className={`waves-effect waves-light btn-small orange lighten-1 ${
+            classes.Checkout
+          }`}
+        >
+          Nastavi
+        </button>
       </div>
     );
   }

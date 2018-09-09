@@ -3,12 +3,21 @@ import React from "react";
 import classes from "./BuildControl.css";
 
 const BuildControl = props => {
-  const { text, onAddIngHandler, onDeleteIngHandler, val, updatePrice } = props;
+  const {
+    text,
+    onAddIngHandler,
+    onDeleteIngHandler,
+    val,
+    updatePrice,
+    disableControls,
+    disableThisIng
+  } = props;
   return (
     <div className={classes.BuildControl}>
       <p>{text}</p>
       <div>
         <button
+          disabled={!disableControls || !disableThisIng}
           onClick={e => {
             onAddIngHandler(text);
             updatePrice(text, true);

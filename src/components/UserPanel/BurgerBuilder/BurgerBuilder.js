@@ -55,11 +55,22 @@ class BurgerBuilder extends Component {
     );
 
     const { burgerStatus } = this.props;
+
     if (burgerStatus) {
+      const disableIngs = {
+        pljeskavica: burgerStatus.burger.pljeskavica,
+        salata: burgerStatus.burger.salata,
+        sir: burgerStatus.burger.sir,
+        slanina: burgerStatus.burger.slanina
+      };
       renderBurger = (
         <div className={classes.BurgerBuilder}>
-          <Burger ings={{ ...this.state.ingredients }} />
+          <Burger
+            disableBurger={burgerStatus.burger.allowBuild}
+            ings={{ ...this.state.ingredients }}
+          />
           <BuildControls
+            disableIngs={disableIngs}
             disableControls={burgerStatus.burger.allowBuild}
             disableBtn={disable}
             getPrice={this.getPrice}

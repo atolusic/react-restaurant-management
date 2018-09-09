@@ -33,3 +33,7 @@
 .Sauces {
   display: flex;
 }
+
+.Checkout {
+  margin-top: 0.6rem;
+}

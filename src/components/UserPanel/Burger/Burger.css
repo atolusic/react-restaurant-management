@@ -8,6 +8,17 @@
   font-size: 1.2rem;
 }
 
+.DisabledNotation {
+  color: #d12028;
+  background: #fff;
+  border-color: #d12028;
+  transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
+  z-index: 2;
+  position: absolute;
+  left: 5rem;
+  cursor: not-allowed;
+}
+
 @media (min-width: 500px) and (min-height: 40px) {
   .Burger {
     width: 350px;
