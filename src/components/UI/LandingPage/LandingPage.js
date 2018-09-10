@@ -9,9 +9,12 @@ const LandingPage = () => {
   return (
     <div className={classes.LandingPage}>
       <div className={classes.MoveUp}>
-        <button className={`btn-small orange lighten-2 ${classes.AdmBtn}`}>
+        <Link
+          to="/adminpanel"
+          className={`btn-small orange lighten-2 ${classes.AdmBtn}`}
+        >
           <i className="material-icons">pan_tool</i>
-        </button>
+        </Link>
         <span>sweet</span>
         <span className={classes.BurgerTitle}>Burger</span>
         <span>o'mine</span>

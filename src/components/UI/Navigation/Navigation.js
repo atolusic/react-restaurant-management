@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Logo from "../../assets/logo/logo2.jpg";
+import Logo from "../../../assets/logo/logo2.jpg";
+
+import classes from "./Navigation.css";
 
 const Navigation = () => {
   return (
@@ -10,7 +12,8 @@ const Navigation = () => {
         height: "7.5vh",
         width: "100%",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-between"
       }}
       className="orange lighten-1"
     >
@@ -45,6 +48,14 @@ const Navigation = () => {
           o'mine
         </span>
       </Link>
+      <div className={classes.NavigationRight}>
+        <Link className={classes.NavigationItem} to="/adminpanel">
+          <i className="material-icons">home</i>
+        </Link>
+        <Link className={classes.NavigationItem} to="/adminpanel/orders">
+          Narudžbe
+        </Link>
+      </div>
     </nav>
   );
 };

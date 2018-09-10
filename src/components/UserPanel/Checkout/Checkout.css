@@ -1,0 +1,23 @@
+.CheckoutWrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CheckoutMainDiv {
+  height: 85vh;
+  width: 70%;
+  border: 0.5rem double #1a1a1a;
+  background-color: #f7f7f7;
+  overflow-y: auto;
+}
+
+.OrderDetailP {
+  font-family: "Haymaker";
+  font-size: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+}

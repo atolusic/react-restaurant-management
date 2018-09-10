@@ -10,6 +10,8 @@ import AdminPanel from "./components/AdminPanel/AdminPanel";
 import MealDetails from "./components/MealManagement/Meals/MealDetails";
 import Menu from "./components/UserPanel/UserPanel";
 import LandingPage from "./components/UI/LandingPage/LandingPage";
+import Checkout from "./components/UserPanel/Checkout/Checkout";
+import OrderStats from "./components/AdminPanel/OrderStats/OrderStats";
 
 class App extends Component {
   render() {
@@ -18,9 +20,11 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/menu" component={Menu} />
+            <Route exact path="/menu" component={Menu} />
+            <Route path="/menu/checkout" component={Checkout} />
             <Layout>
-              <Route path="/adminpanel" component={AdminPanel} />
+              <Route exact path="/adminpanel" component={AdminPanel} />
+              <Route exact path="/adminpanel/orders" component={OrderStats} />
               <Route path="/meals/:id" component={MealDetails} />
             </Layout>
           </Switch>

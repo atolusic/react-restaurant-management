@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { deleteFromOrders } from "../../../store/actions/orderActions";
 
@@ -8,6 +9,7 @@ import classes from "./Orders.css";
 class Orders extends Component {
   render() {
     const {
+      checkout,
       orders: { orders },
       deleteFromOrders
     } = this.props;
@@ -21,12 +23,14 @@ class Orders extends Component {
                 {order.count} x {order.name}
                 {order.specialOfferItem ? ` + ${order.specialOfferItem}` : null}
               </p>
-              <p
-                onClick={() => deleteFromOrders(order.id)}
-                className={classes.RemoveFromCart}
-              >
-                x
-              </p>
+              {!checkout && (
+                <p
+                  onClick={() => deleteFromOrders(order.id)}
+                  className={classes.RemoveFromCart}
+                >
+                  x
+                </p>
+              )}
             </div>
             <p>{parseFloat(order.price).toFixed(2)} kn</p>
           </div>
@@ -59,14 +63,20 @@ class Orders extends Component {
           <p>Ukupno:</p>
           <p>{parseFloat(totalPrice).toFixed(2)} kn</p>
         </div>
-        <button
-          disabled={!orders.length}
-          className={`waves-effect waves-light btn-small orange lighten-1 ${
-            classes.Checkout
-          }`}
-        >
-          Nastavi
-        </button>
+        {!checkout && (
+          <Link
+            to={{
+              pathname: "/menu/checkout",
+              state: { orders, totalPrice }
+            }}
+            disabled={!orders.length}
+            className={`waves-effect waves-light btn-small orange lighten-1 ${
+              classes.Checkout
+            }`}
+          >
+            Nastavi
+          </Link>
+        )}
       </div>
     );
   }
