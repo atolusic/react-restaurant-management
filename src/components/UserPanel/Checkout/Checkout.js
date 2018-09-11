@@ -162,7 +162,7 @@ class Checkout extends Component {
             </MealWrapper>
           </div>
           <Popup
-            header="Vaša nardužba je uspješno zaprimljena!"
+            header="Vaša narudžba je uspješno zaprimljena!"
             state={open}
             onClose={this.onCloseModal}
             onClosePopup={this.onCloseModal}
