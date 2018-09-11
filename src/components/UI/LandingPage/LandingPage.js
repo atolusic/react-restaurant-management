@@ -13,7 +13,7 @@ const LandingPage = () => {
           to="/adminpanel"
           className={`btn-small orange lighten-2 ${classes.AdmBtn}`}
         >
-          <i className="material-icons">pan_tool</i>
+          <i className="material-icons">lock</i>
         </Link>
         <span>sweet</span>
         <span className={classes.BurgerTitle}>Burger</span>
