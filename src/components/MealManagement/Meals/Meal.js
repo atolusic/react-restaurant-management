@@ -251,7 +251,7 @@ class Meal extends React.Component {
           header="Obrok ce biti izbrisan iz menija. Jeste li Sigurni?"
           state={open}
           onClose={this.onCloseModal}
-          onClosePopup={this.onCloseModal}
+          onCloseModal={this.onCloseModal}
           onDeleteClick={this.onDeleteClick}
         />
       </div>

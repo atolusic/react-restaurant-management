@@ -32,6 +32,61 @@
 }
 
 .OrderLi {
-  border-bottom: 1px solid #000;
+  border-bottom: 2px solid #000;
   padding: 0.6rem 0.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContactBrdr {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #333;
+  width: 20%;
+}
+
+.OrderDone {
+  display: flex;
+}
+
+.OrderDoneCheckbox {
+  margin-left: 1rem;
+}
+
+.OrderedMealsAndPrice {
+  color: #333;
+}
+
+.OrderedMeals {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #333;
+}
+
+.Price {
+  font-weight: 600;
+}
+
+.PriceNotation {
+  color: #000;
+}
+
+.BurgerIngs {
+  margin-left: 0.5rem;
+}
+
+.ChartDiv {
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.NumOfOrders {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  width: 50%;
+  text-align: center;
 }

@@ -55,7 +55,8 @@ class Checkout extends Component {
       totalPrice,
       orders,
       contact: { name, email, tel, address },
-      orderTime: date.toString()
+      orderTime: date.toUTCString(),
+      shipped: false
     };
 
     firestore.add({ collection: "orders" }, orderData).then(() => {
