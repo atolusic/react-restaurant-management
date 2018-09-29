@@ -49,10 +49,7 @@ class MealForm extends Component {
     };
 
     if (editMeal) {
-      // ako editMeal prop postoji onda izvrsi update meal-a
       if (!specialOffer) {
-        // ako specialOffer postavio na false u editu, postavi i item na false tako
-        // da se ne vidi medu obrocima koji nisu specijalna ponuda
         this.setState({ specialOfferItem: null });
         data.specialOfferItem = null;
       }
@@ -61,9 +58,7 @@ class MealForm extends Component {
         setTimeout(() => this.setState({ successMsg: false }), 2000);
       });
     } else {
-      // dodaj vrijednosti iz forme u bazu i update-aj store
       firestore.add({ collection: "meals" }, data);
-      // ocisti fieldove forme nakon dodavanja
       this.setState({
         name: "",
         price: "",

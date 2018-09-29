@@ -1,0 +1,58 @@
+/* .Meal {
+  display: flex;
+  flex-direction: column;
+}
+
+.MealStyleIfSpec {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.MealStyle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ImgAndNameIfSpec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ImgAndNameNoSpec {
+  display: flex;
+  flex: 2;
+}
+
+.SpinnerImg {
+  width: 150px;
+  height: 130px;
+  flex: 1;
+  border: 2px solid #333;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Img {
+  border: 2px solid #333;
+  padding: 0.2rem;
+}
+
+.NameAndDesc {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5rem 0 1rem;
+  flex: 2;
+}
+
+.Name {
+  font-family: "Haymaker";
+  color: #333;
+  letter-spacing: 0.2rem;
+  font-size: 1.6rem;
+} */

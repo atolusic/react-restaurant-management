@@ -3,14 +3,14 @@ import ReactFontFace from "react-font-face";
 import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 
-import { fontSecondary } from "../../../assets/font/font";
-import noImg from "../../../assets/imgs/noImg.png";
-import showSpecialOfferItemDetails from "../../../assets/showSpecialOfferItemDetails";
+import { fontSecondary } from "../../../../assets/font/font";
+import noImg from "../../../../assets/imgs/noImg.png";
+import showSpecialOfferItemDetails from "../../../../assets/showSpecialOfferItemDetails";
 
-import Spinner from "../../UI/Spinner";
-import UploadImage from "../../UI/UploadImage";
-import Combobox from "../../UI/Combobox";
-import Popup from "../../UI/Popup";
+import Spinner from "../../../UI/Spinner";
+import UploadImage from "../../../UI/UploadImage";
+import Combobox from "../../../UI/Combobox";
+import Popup from "../../../UI/Popup";
 
 class Meal extends React.Component {
   state = {

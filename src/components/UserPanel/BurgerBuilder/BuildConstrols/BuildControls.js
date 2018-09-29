@@ -108,7 +108,7 @@ class BuildControls extends Component {
     const { price } = this.state;
     let arrayOfIngs = [];
     // array od sastojaka *** [{salata: 2}, {slanina: 3} ...] ***
-    this.arrayOfIngs(arrayOfIngs, ings); // STAO SAM KOD DISABLEA BUILD KONTROLSA
+    this.arrayOfIngs(arrayOfIngs, ings);
     let buildCntrls = arrayOfIngs.map((item, i) => (
       <BuildControl
         // iz propsa sam dobio obj sa sastojcima koji su disabled, dok prolazim

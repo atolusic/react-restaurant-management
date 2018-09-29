@@ -10,7 +10,7 @@ const LandingPage = () => {
     <div className={classes.LandingPage}>
       <div className={classes.MoveUp}>
         <Link
-          to="/adminpanel"
+          to="/login"
           className={`btn-small orange lighten-2 ${classes.AdmBtn}`}
         >
           <i className="material-icons">lock</i>

@@ -16,6 +16,15 @@ class BurgerIngredientsManager extends Component {
     successMsg: false
   };
 
+  componentDidMount() {
+    const { firestore } = this.props;
+    firestore.get("burger/burger").then(data => {
+      if (data.exists) {
+        this.setState({ ...data.data() });
+      }
+    });
+  }
+
   onSaveClickHandler = e => {
     const { firestore } = this.props;
 
@@ -30,15 +39,6 @@ class BurgerIngredientsManager extends Component {
         setTimeout(() => this.setState({ successMsg: false }), 2000);
       });
   };
-
-  componentDidMount() {
-    const { firestore } = this.props;
-    firestore.get("burger/burger").then(data => {
-      if (data.exists) {
-        this.setState({ ...data.data() });
-      }
-    });
-  }
 
   onCheckboxChange = e => {
     this.setState({ [e.target.name]: !this.state[e.target.name] });
@@ -87,7 +87,9 @@ class BurgerIngredientsManager extends Component {
           }}
         >
           <div style={{ display: "flex", marginBottom: "1rem" }}>
-            <p style={{ marginRight: "1rem" }}>Omoguci samoizradu hamburgera</p>
+            <p style={{ marginRight: "1rem" }}>
+              Omogući samoizradu Sweet Burgera
+            </p>
             <div className="switch">
               <label>
                 <input
